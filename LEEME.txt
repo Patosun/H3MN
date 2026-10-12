@@ -1,0 +1,47 @@
+HITO 3 - Métodos Numéricos
+==========================
+
+Requisitos: Python 3 y matplotlib (para las gráficas).
+  Arch/CachyOS : sudo pacman -S python-matplotlib
+  Otros        : pip install matplotlib
+Sin matplotlib los programas funcionan igual, solo no grafican.
+
+Archivos
+--------
+  diferencias_divididas.py  Diferencias divididas de Newton
+  splines_cubicos.py        Splines cúbicos naturales (compara con Newton)
+  integracion_numerica.py   Método del trapecio y Simpson 1/3
+  funciones.py              Lectura de f(x), nodos y archivos .csv
+  graficas.py               Gráficas (se guardan en la carpeta graficas/)
+  x_f.csv                   Datos de prueba (columnas x, f)
+
+Cómo correrlos (desde esta carpeta)
+-----------------------------------
+1) Interpolación con un archivo .csv:
+     python3 diferencias_divididas.py x_f.csv
+     python3 splines_cubicos.py x_f.csv
+   Luego escribe los puntos a evaluar, p. ej.:  1.5 5 7.5   (o Enter)
+
+2) Interpolación escribiendo los datos (sin argumentos):
+     python3 diferencias_divididas.py
+     python3 splines_cubicos.py
+   Opciones:
+     0) Leer un .csv (pide la ruta)
+     1) Función f(x): escribe f(x), elige nodos (a, b, n o lista de x)
+        y los puntos a evaluar. Muestra el error contra f real.
+     2) Tabla: escribe x0 x1 ... xn, luego f0 f1 ... fn y los puntos.
+     3) Ejemplo de clase.
+
+3) Integración:
+     python3 integracion_numerica.py
+   Opciones 1-5: integrales del PDF (erf, C, S, Si, Li) -> pide x y n.
+   Opción 6    : cualquier f(x) -> pide f(x), a, b, n y el valor exacto
+                 (opcional; Enter para usar Simpson con n = 200000).
+   x_i = a + i*h, i = 0..n, con x_0 = a y x_n = b.  Simpson requiere n par.
+
+Escritura de funciones: usa x como variable, * para multiplicar y ^ o **
+para potencias. Ejemplos: x^2 + 3*x - 1, exp(-x^2), sin(x)/x,
+1/(1+25*x^2), sqrt(x), ln(x), cos(pi*x)
+
+Opción extra: agrega --sin-ventana para solo guardar los .png sin abrir
+ventanas, p. ej.  python3 splines_cubicos.py x_f.csv --sin-ventana
